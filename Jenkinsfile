@@ -3,7 +3,7 @@ pipeline {
 
   stages {
     stage('Shard 1 of 3') {
-      agent { label 'playwright-agent' }
+      agent any
       steps {
         checkout scm
         sh 'npm ci'
@@ -13,7 +13,7 @@ pipeline {
     }
 
     stage('Shard 2 of 3') {
-      agent { label 'playwright-agent' }
+      agent any
       steps {
         checkout scm
         sh 'npm ci'
@@ -23,7 +23,7 @@ pipeline {
     }
 
     stage('Shard 3 of 3') {
-      agent { label 'playwright-agent' }
+      agent any
       steps {
         checkout scm
         sh 'npm ci'

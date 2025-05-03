@@ -1,6 +1,5 @@
 pipeline {
   agent none
-
   stages {
     stage('Run Playwright Tests in Parallel') {
       agent any

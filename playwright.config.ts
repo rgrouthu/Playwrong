@@ -9,6 +9,7 @@ export default defineConfig({
   expect:{
     timeout:10_000
   },
+  reporter:'html',
   use: {
     headless: false,
     viewport: { width: 1280, height: 720 },

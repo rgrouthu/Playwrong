@@ -36,3 +36,11 @@ pipeline {
     }
   }
 }
+publishHTML(target: [
+  reportDir: 'playwright-report',
+  reportFiles: 'index.html',
+  reportName: 'Playwright Test Report',
+  alwaysLinkToLastBuild: true,
+  keepAll: true
+])
+

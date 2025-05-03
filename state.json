@@ -12,3 +12,31 @@
     }
   ]
 }
+
+/* 🆕 5. Tag-based test filtering + parallel jobs
+You can use Playwright's --grep option to run only certain tagged tests in each CI job:
+
+ts
+Copy
+Edit
+test('@smoke should login', async ({ page }) => {
+  // test code
+});
+In CI, split these:
+
+bash
+Copy
+Edit
+npx playwright test --grep @smoke
+npx playwright test --grep @regression
+Each command runs in a separate job or container — effective parallelization.
+
+🆕 6. Multiple npx playwright test commands in parallel
+You can manually parallelize by running different test suites or folders via separate commands:
+
+bash
+Copy
+Edit
+npx playwright test tests/login
+npx playwright test tests/dashboard
+Run these in parallel with CI steps, npm-run-all, or background jobs. */

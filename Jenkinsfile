@@ -2,33 +2,49 @@ pipeline {
   agent none
 
   stages {
-    stage('Shard 1 of 3') {
-      agent any
-      steps {
-        checkout scm
-        sh 'npm ci'
-        sh 'npx playwright install --with-deps'
-        sh 'npx playwright test --shard=1/3'
-      }
-    }
+    stage('Run Playwright Tests in Parallel') {
+      parallel {
+        Shard1: {
+          agent any
+          stages {
+            stage('Run Shard 1') {
+              steps {
+                checkout scm
+                bat 'npm ci'
+                bat 'npx playwright install --with-deps'
+                bat 'npx playwright test --shard=1/3'
+              }
+            }
+          }
+        }
 
-    stage('Shard 2 of 3') {
-      agent any
-      steps {
-        checkout scm
-        sh 'npm ci'
-        sh 'npx playwright install --with-deps'
-        sh 'npx playwright test --shard=2/3'
-      }
-    }
+        Shard2: {
+          agent any
+          stages {
+            stage('Run Shard 2') {
+              steps {
+                checkout scm
+                bat 'npm ci'
+                bat 'npx playwright install --with-deps'
+                bat 'npx playwright test --shard=2/3'
+              }
+            }
+          }
+        }
 
-    stage('Shard 3 of 3') {
-      agent any
-      steps {
-        checkout scm
-        sh 'npm ci'
-        sh 'npx playwright install --with-deps'
-        sh 'npx playwright test --shard=3/3'
+        Shard3: {
+          agent any
+          stages {
+            stage('Run Shard 3') {
+              steps {
+                checkout scm
+                bat 'npm ci'
+                bat 'npx playwright install --with-deps'
+                bat 'npx playwright test --shard=3/3'
+              }
+            }
+          }
+        }
       }
     }
   }

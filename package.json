@@ -1,0 +1,24 @@
+{
+  "name": "playwrong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "Logincase": "npx playwright test  --grep \"@Important\"",
+    "Addtocartcase": "npx playwright test --debug --grep \"@addToCart\"",
+    "RemovefromCart": "npx playwright test  --grep \"@checkOut\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.3"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "zod": "^3.24.3"
+  }
+}

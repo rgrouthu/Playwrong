@@ -12,7 +12,7 @@ export default defineConfig({
   reporter: [['html'], ['junit', { outputFile: 'test-results/results.xml' }]],
 
   use: {
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     video: 'retain-on-failure',

@@ -38,8 +38,10 @@ async placeOrder(){
 
 }
 
-async verifyOrderConfirmation(){
+async verifyOrderConfirmationMessage(): Promise<string | null>{
     await this.orderFinishConfirmMessage.isVisible();
-    expect(await this.orderFinishConfirmMessage.textContent()).toBe('Thank you for your order!');
+    const successfullMessage =await this.orderFinishConfirmMessage.textContent();
+    return successfullMessage
+    //expect(await this.orderFinishConfirmMessage.textContent()).toBe('Thank you for your order!');
 }
 }

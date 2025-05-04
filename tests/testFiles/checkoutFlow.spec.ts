@@ -26,7 +26,7 @@ test.describe('checkOut Flow Page', () => {
         await check.goToCartPage();
         await check.enterCustomerDetails();
         await check.placeOrder();
-        await check.verifyOrderConfirmation();
+     expect(await check.verifyOrderConfirmationMessage()).toBe('Thank you for your order!');
 
 
     });

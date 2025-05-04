@@ -1,6 +1,59 @@
-import {test,expect,Page,Locator} from '@playwright/test'
-test('@smoke Add a Product to Cart and Verify',async({page})=>{
-    await page.goto('https://www.saucedemo.com/');
+import { test, expect, Page, Locator, Browser } from '@playwright/test'
+import { LoginPage } from '../PageObjects/loginPage'
+import { addToCartPage } from '../PageObjects/addToCartPage'
+import { CheckOutPage } from '../PageObjects/checkoutFlowPage'
+import { RemoveCart } from '../PageObjects/removeFromCart'
+import { SortItems } from '../PageObjects/sortItemPage'
+
+
+test.describe('@regression sort Items', () => {
+
+    let lp: LoginPage;
+    let ap: addToCartPage;
+    let cop: CheckOutPage;
+    let rc: RemoveCart;
+    let sort: SortItems;
+    let context: any;
+    let page: Page;
+    test.beforeAll('Initialise Objects', async ({ browser }) => {
+        context = await browser.newContext();
+        page = await context.newPage();
+        lp = new LoginPage(page);
+        ap = new addToCartPage(page);
+        cop = new CheckOutPage(page);
+        rc = new RemoveCart(page);
+        sort = new SortItems(page)
+    });
+
+    test('@smoke Add a Product to Cart and Verify', async () => {
+
+        await lp.doLogin('standard_user', 'secret_sauce');
+    
+
+
+
+        if (expect(sort.verifySortContainerVisibilty())) {
+            console.log(await sort.verifySortContainerVisibilty())
+            expect(await sort.verifyHightoLowSort()).toBeTruthy();
+            expect(await sort.verifyLowtoHighSort()).toBeTruthy();
+        }
+        else {
+            console.log('sort icon visibility status', expect(await sort.verifySortContainerVisibilty))
+        }
+
+
+
+
+
+
+    });
+
+
+
+})
+
+
+/* await page.goto('https://www.saucedemo.com/');
     await page.locator('#user-name').fill('standard_user');
     await page.locator('#password').fill('secret_sauce');
     await page.locator('#login-button').click();
@@ -26,20 +79,4 @@ const isSorted2=priceList2.every((val,i,a)=>i===0||a[i-1]>=val);
 expect(isSorted2).toBeTruthy()
 
 
-
-  
-  
-    // const itemsCount= itemPrices.count();
-   
-
-
-
-
-
-
-
-
-
-
-
-});
+ */

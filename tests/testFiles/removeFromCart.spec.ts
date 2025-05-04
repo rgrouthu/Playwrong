@@ -1,5 +1,5 @@
 import {test,expect,Page,Locator} from '@playwright/test'
-test('@removeFromCart Remove a Product from Cart and Verify',async({page})=>{
+test('@regression Remove a Product from Cart and Verify',async({page})=>{
 await page.goto('https://www.saucedemo.com/');
 await page.locator('#user-name').fill('standard_user');
 await page.locator('#password').fill('secret_sauce');

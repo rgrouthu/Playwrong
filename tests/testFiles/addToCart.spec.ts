@@ -3,7 +3,7 @@ import { addToCartPage } from '../PageObjects/addToCartPage';
 import { LoginPage } from '../PageObjects/loginPage'
 
 
-test.describe('@addToCart Add a Product to Cart and Verify',()=>{
+test.describe('@smoke Add a Product to Cart and Verify',()=>{
     let loginpage:LoginPage;
     let addtocartpage:addToCartPage;
     test.beforeEach(async({page})=>{

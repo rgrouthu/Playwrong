@@ -1,5 +1,5 @@
 import {test,expect,Page,Locator} from '@playwright/test'
-test('@checkOut CheckOut a Product Verify',async({page})=>{
+test('@regression CheckOut a Product Verify',async({page})=>{
 
  
     await page.goto('https://www.saucedemo.com/');

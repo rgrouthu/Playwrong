@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Ensure using the latest Ubuntu runner
+    runs-on: ubuntu-latest
 
     steps:
     - name: ⬇️ Checkout code
@@ -23,34 +23,34 @@ jobs:
     - name: 📦 Install dependencies
       run: npm ci
 
+    - name: 🧩 Install Allure Playwright Reporter
+      run: npm install -D allure-playwright
+
     - name: 🧪 Install Playwright Browsers
       run: npx playwright install
 
-    - name: 🚀 Run Playwright Tests
-      run: npx playwright test --reporter=html
-
-    - name: 📄 Upload HTML Report (optional)
-      if: always()  # Ensures the artifact is uploaded even if the test fails
-      uses: actions/upload-artifact@v4  # Downgraded to v2
-      with:
-        name: playwright-report
-        path: playwright-report
-
     - name: 📥 Install Allure CLI
       run: |
-          sudo apt-get update
-          sudo apt-get install -y openjdk-11-jdk
-          npm install -g allure-commandline --save-dev
+        sudo apt-get update
+        sudo apt-get install -y openjdk-11-jdk
+        npm install -g allure-commandline --save-dev
 
-    - name: 🧪 Run Playwright tests with Allure reporter
-      run: npx playwright test
+    - name: 🚀 Run Playwright Tests (HTML + Allure)
+      run: npx playwright test --reporter=html,allure-playwright
+
+    - name: 📄 Upload HTML Report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-html-report
+        path: playwright-report
 
     - name: 🛠️ Generate Allure Report
       run: |
-          allure generate allure-results --clean -o allure-report
+        allure generate allure-results --clean -o allure-report
 
     - name: 📤 Upload Allure Report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-          name: allure-report
-          path: allure-report
+        name: allure-report
+        path: allure-report

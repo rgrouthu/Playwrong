@@ -54,3 +54,13 @@ jobs:
       with:
         name: allure-report
         path: allure-report
+# ❓Next Steps
+# Would you like help modifying this workflow to:
+
+# Run specific tags (@smoke, @regression)?
+
+# Run in parallel?
+
+# Use matrix for different OS or browsers?
+
+# Let me know what you'd like to do next!

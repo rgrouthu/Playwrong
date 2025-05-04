@@ -9,7 +9,8 @@ export default defineConfig({
   expect:{
     timeout:10_000
   },
-  reporter:'html',
+  reporter: [['html'], ['junit', { outputFile: 'test-results/results.xml' }]],
+
   use: {
     headless: false,
     viewport: { width: 1280, height: 720 },

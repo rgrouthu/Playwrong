@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","16672","@smoke Login and Validate Successful Navigation","","Sun May 04 11:52:06 IST 2025","passed","Sun May 04 11:52:23 IST 2025","","testFiles\loginTest.spec.ts","",""
+"","2846","@regression Remove a Product from Cart and Verify","","Sun May 04 11:52:31 IST 2025","failed","Sun May 04 11:52:34 IST 2025","","testFiles\removeFromCart.spec.ts","",""
+"","17336","@regression CheckOut a Product Verify","","Sun May 04 11:52:06 IST 2025","passed","Sun May 04 11:52:24 IST 2025","","testFiles\checkoutFlow.spec.ts","",""
+"","21060","should add product to cart and verify cart item name","","Sun May 04 11:52:06 IST 2025","passed","Sun May 04 11:52:28 IST 2025","@smoke Add a Product to Cart and Verify","testFiles\addToCart.spec.ts","",""
+"","12486","@smoke Add a Product to Cart and Verify","","Sun May 04 11:52:07 IST 2025","passed","Sun May 04 11:52:19 IST 2025","","testFiles\sortItems.spec.ts","",""

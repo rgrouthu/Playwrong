@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test",
+    "test1": "playwright test",
+    "smoke": "npx playwright test --grep '@smoke'",
+    "regression": "npx playwright test --grep='@regression'",
     "parallel-tests": "concurrently \"npx playwright test --grep @smoke\" \"npx playwright test --grep @regression\""
   },
   "keywords": [],
